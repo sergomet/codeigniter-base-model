@@ -1,10 +1,9 @@
 <?php
 /**
- * A base model with a series of CRUD functions (powered by CI's query builder),
- * validation-in-model support, event callbacks and more.
+ * A base model with a series of CRUD functions
  *
- * @link http://github.com/jamierumbelow/codeigniter-base-model
- * @copyright Copyright (c) 2012, Jamie Rumbelow <http://jamierumbelow.net>
+ * @link http://github.com/sergomet/codeigniter-base-model
+ * @copyright Copyright (c) 2016, Vlad Vasilov <http://foxdesign.ro>
  */
 
 class MY_Model extends CI_Model

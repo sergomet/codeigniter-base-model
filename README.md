@@ -1,69 +1,16 @@
 codeigniter-base-model
 =====================================
 
-This is an update to CodeIgniter Base Model, original by jamierumbelow.
+This is an update to CodeIgniter Base Model, original by [jamierumbelow](https://github.com/jamierumbelow/codeigniter-base-model).
 
-My CodeIgniter Base Model is an extended CI_Model class to use in your CodeIgniter applications. It provides a full CRUD base to make developing database interactions easier and quicker, as well as an event-based observer system, in-model data validation, intelligent table name guessing and soft delete.
-
-Synopsis
---------
-
-```php
-class Post_model extends MY_Model { }
-
-$this->load->model('post_model', 'post');
-
-$this->post->get_all();
-
-$this->post->get(1);
-$this->post->get_by('title', 'Pigs CAN Fly!');
-$this->post->get_many_by('status', 'open');
-
-$this->post->insert(array(
-    'status' => 'open',
-    'title' => "I'm too sexy for my shirt"
-));
-
-$this->post->update(1, array( 'status' => 'closed' ));
-
-$this->post->delete(1);
-```
 
 Installation/Usage
 ------------------
 
-Download and drag the MY\_Model.php file into your _application/core_ folder. CodeIgniter will load and initialise this class automatically for you.
+Download and drag the MY\_Model.php file into your _application/core_ folder.
 
 Extend your model classes from `MY_Model` and all the functionality will be baked in automatically.
 
-Naming Conventions
-------------------
-
-This class will try to guess the name of the table to use, by finding the plural of the class name. 
-
-For instance:
-
-    class Post_model extends MY_Model { }
-
-...will guess a table name of `posts`. It also works with `_m`:
-
-    class Book_m extends MY_Model { }
-
-...will guess `books`.
-
-If you need to set it to something else, you can declare the _$\_table_ instance variable and set it to the table name:
-
-    class Post_model extends MY_Model
-    {
-        public $_table = 'blogposts';
-    }
-
-Some of the CRUD functions also assume that your primary key ID column is called _'id'_. You can overwrite this functionality by setting the _$primary\_key_ instance variable:
-
-    class Post_model extends MY_Model
-    {
-        public $primary_key = 'post_id';
-    }
 
 Callbacks/Observers
 -------------------
@@ -326,74 +273,11 @@ class Post_model extends MY_Model
 }
 ```
 
-Unit Tests
-----------
 
-MY_Model contains a robust set of unit tests to ensure that the system works as planned.
-
-Install the testing framework (PHPUnit) with Composer:
-
-    $ curl -s https://getcomposer.org/installer | php
-    $ php composer.phar install
-
-You can then run the tests using the `vendor/bin/phpunit` binary and specify the tests file:
-
-    $ vendor/bin/phpunit
-
-
-Contributing to MY_Model
-------------------------
-
-If you find a bug or want to add a feature to MY_Model, great! In order to make it easier and quicker for me to verify and merge changes in, it would be amazing if you could follow these few basic steps:
-
-1. Fork the project.
-2. **Branch out into a new branch. `git checkout -b name_of_new_feature_or_bug`**
-3. Make your feature addition or bug fix.
-4. **Add tests for it. This is important so I don’t break it in a future version unintentionally.**
-5. Commit.
-6. Send me a pull request!
-
-
-Other Documentation
--------------------
-
-* My book, The CodeIgniter Handbook, talks about the techniques used in MY_Model and lots of other interesting useful stuff. [Get a copy now.](https://efendibooks.com/books/codeigniter-handbook/vol-1)
-* Jeff Madsen has written an excellent tutorial about the basics (and triggered me updating the documentation here). [Read it now, you lovely people.](http://www.codebyjeff.com/blog/2012/01/using-jamie-rumbelows-my_model)
-* Rob Allport wrote a post about MY_Model and his experiences with it. [Check it out!](http://www.web-design-talk.co.uk/493/codeigniter-base-models-rock/)
-* I've written a write up of the new 2.0.0 features [over at my blog, Jamie On Software.](http://jamieonsoftware.com/journal/2012/9/11/my_model-200-at-a-glance.html)
 
 Changelog
 ---------
 
-**Version 2.0.0**
+**Version 3.0.0**
 * Added support for soft deletes
 * Removed Composer support. Great system, CI makes it difficult to use for MY_ classes
-* Fixed up all problems with callbacks and consolidated into single `trigger` method
-* Added support for relationships
-* Added built-in timestamp observers
-* The DB connection can now be manually set with `$this->_db`, rather than relying on the `$active_group`
-* Callbacks can also now take parameters when setting in callback array
-* Added support for column serialisation
-* Added support for protected attributes
-* Added a `truncate()` method
-
-**Version 1.3.0**
-* Added support for array return types using `$return_type` variable and `as_array()` and `as_object()` methods
-* Added PHP5.3 support for the test suite
-* Removed the deprecated `MY_Model()` constructor
-* Fixed an issue with after_create callbacks (thanks [zbrox](https://github.com/zbrox)!)
-* Composer package will now autoload the file
-* Fixed the callback example by returning the given/modified data (thanks [druu](https://github.com/druu)!)
-* Change order of operations in `_fetch_table()` (thanks [JustinBusschau](https://github.com/JustinBusschau)!)
-
-**Version 1.2.0**
-* Bugfix to `update_many()`
-* Added getters for table name and skip validation
-* Fix to callback functionality (thanks [titosemi](https://github.com/titosemi)!)
-* Vastly improved documentation
-* Added a `get_next_id()` method (thanks [gbaldera](https://github.com/gbaldera)!)
-* Added a set of unit tests
-* Added support for [Composer](http://getcomposer.org/)
-
-**Version 1.0.0 - 1.1.0**
-* Initial Releases
