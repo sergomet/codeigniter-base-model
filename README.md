@@ -175,6 +175,22 @@ To change this, use the `primary_key` value when configuring:
         public $has_many = array( 'comments' => array( 'primary_key' => 'parent_post_id' ) );
     }
 
+
+**Update** foreign_key added 
+
+    class Post_model extends MY_Model
+    {
+        public $belongs_to = array( 
+            'author' => array( 
+                'model' => 'author_m',
+                'primary_key' => 'post_author_id',
+                'foreign_key' => 'author_id'
+            ) 
+        );
+    }
+
+
+
 Arrays vs Objects
 -----------------
 
@@ -279,5 +295,4 @@ Changelog
 ---------
 
 **Version 3.0.0**
-* Added support for soft deletes
-* Removed Composer support. Great system, CI makes it difficult to use for MY_ classes
+* Added foreign_key to model relationship
